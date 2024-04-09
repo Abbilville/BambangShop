@@ -48,15 +48,15 @@ You can install Postman via this website: https://www.postman.com/downloads/
     (You might want to use `cargo check` if you only need to verify your work without running the app.)
 
 ## Mandatory Checklists (Publisher)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
+-   [x] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Subscriber model struct.`
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Subscriber repository.`
-    -   [ ] Commit: `Implement list_all function in Subscriber repository.`
-    -   [ ] Commit: `Implement delete function in Subscriber repository.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
+    -   [x] Commit: `Create Subscriber model struct.`
+    -   [x] Commit: `Create Notification model struct.`
+    -   [x] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
+    -   [x] Commit: `Implement add function in Subscriber repository.`
+    -   [x] Commit: `Implement list_all function in Subscriber repository.`
+    -   [x] Commit: `Implement delete function in Subscriber repository.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -77,11 +77,11 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
-1. In the Observer pattern diagram explained by the Head First Design Pattern book, Subscriber is defined as an interface. Explain based on your understanding of Observer design patterns, do we still need an interface (or **trait** in Rust) in this BambangShop case, or a single Model **struct** is enough?
+1. In the Observer pattern diagram explained by the Head First Design Pattern book, Subscriber is defined as an interface. Explain based on your understanding of Observer design patterns, do we still need an interface (or **trait** in Rust) in this BambangShop case, or a single Model **struct** is enough?<br>
 Pada Observer design patterns, interface (atau trait pada rust) biasanya digunakan untuk mendefinisikan method-method atau services yang akan digunakan. Namun, pada kasus ini (BambangShop), penggunaan Interface atau Trait tidak terlalu diperlukan karena tidak ada banyak variasi dalam behaviour dari observer yang diharapkan. Sebagai gantinya, satu struktur Model yang mencakup data tentang observer dan behaviour yang diperlukan untuk memberi tahu mereka sudah cukup. Oleh karena itu, dalam kasus ini, menggunakan satu struktur Model untuk observer sudah cukup.<br>
-2. **id** in **Program** and **url** in **Subscriber** is intended to be unique. Explain based on your understanding, is using **Vec** (list) sufficient or using **DashMap** (map/dictionary) like we currently use is necessary for this case?
+2. **id** in **Program** and **url** in **Subscriber** is intended to be unique. Explain based on your understanding, is using **Vec** (list) sufficient or using **DashMap** (map/dictionary) like we currently use is necessary for this case?<br>
 Penggunaan Vec (list) mungkin sudah sufficient jika kita hanya perlu menyimpan ID atau URL unik dari pelanggan. Namun, menggunakan DashMap (map/dictionary) seperti yang digunakan saat ini lebih disarankan karena memberikan keuntungan dalam kecepatan akses dan manipulasi data. Dengan DashMap, kita dapat dengan mudah memeriksa keberadaan ID atau URL yang sudah ada, dan juga dapat dengan cepat mengakses atau memperbarui entri yang ada. Ini dapat menjadi lebih efisien dan memungkinkan kinerja yang lebih baik ketika skala aplikasi meningkat.<br>
-3. When programming using Rust, we are enforced by rigorous compiler constraints to make a thread-safe program. In the case of the List of Subscribers (**SUBSCRIBERS**) static variable, we used the **DashMap** external library for **thread safe HashMap**. Explain based on your understanding of design patterns, do we still need **DashMap** or we can implement Singleton pattern instead?
+3. When programming using Rust, we are enforced by rigorous compiler constraints to make a thread-safe program. In the case of the List of Subscribers (**SUBSCRIBERS**) static variable, we used the **DashMap** external library for **thread safe HashMap**. Explain based on your understanding of design patterns, do we still need **DashMap** or we can implement Singleton pattern instead?<br>
 Pada Singleton Pattern, satu class hanya memiliki satu instance di seluruh aplikasi. Dalam kasus ini, menggunakan DashMap untuk SUBSCRIBERS static variable adalah pilihan terbaik karena memungkinkan kita untuk memiliki akses ke struktur data yang sama dari mana pun dalam aplikasi, dan memastikan bahwa itu aman secara bersamaan. DashMap menyediakan solusi yang baik untuk keamanan concurrency dalam multithreaded environment, yang mana sangat penting dalam pengembangan program Rust. Meskipun Singleton pattern dapat diimplementasikan dalam Rust, penggunaannya mungkin tidak diperlukan dalam kasus ini karena DashMap secara efektif menyediakan fungsionalitas yang diperlukan sambil mempertahankan keamanan bersama. Oleh karena itu, penggunaan DashMap adalah pilihan yang tepat untuk kebutuhan SUBSCRIBERS static variable dalam aplikasi BambangShop.
 
 
