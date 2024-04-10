@@ -93,7 +93,19 @@ Jika kita hanya menggunakan Model tanpa memisahkan concern menjadi Service dan R
 3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects. <br>
 Menggunakan Postman membantu saya untuk mengetest program yang dibuat pada tutorial ini dengan mengirimkan response ke endpoint API sehingga kita dapat mengsimulasikannya walaupun belum ada HTML-nya. Berikut fitur yang mungkin akan saya gunakan di tugas kelompok nantinya:
 - **Sending Requests**, fitur ini memungkinkan kita dengan mudah mengirim permintaan HTTP ke endpoint API dengan parameter yang dapat disesuaikan seperti header, parameter query, dan request body.
-- **Automated Testing**: fitur ini memungkinkan kita membuat dan menjalankan rangkaian pengujian otomatis di Postman untuk memverifikasi perilaku endpoint API, termasuk pengujian untuk response status code, response body content, dan lainnya
-- **Environment Variables**: fitur ini memungkinkan untuk mendefinisikan dan menggunakan environment variable, yang membuat mudah untuk beralih antar environment yang berbeda (misalnya, development, staging, production) saat menguji API.
+- **Automated Testing**, fitur ini memungkinkan kita membuat dan menjalankan rangkaian pengujian otomatis di Postman untuk memverifikasi perilaku endpoint API, termasuk pengujian untuk response status code, response body content, dan lainnya
+- **Environment Variables**, fitur ini memungkinkan untuk mendefinisikan dan menggunakan environment variable, yang membuat mudah untuk beralih antar environment yang berbeda (misalnya, development, staging, production) saat menguji API.
 
 #### Reflection Publisher-3
+1. Observer Pattern has two variations: **Push model** (publisher pushes data to subscribers) and **Pull model** (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?<br>
+Dalam kasus tutorial ini, kita menggunakan variasi Push model dari Observer Pattern. Hal ini terlihat dari deskripsi bahwa notificiation akan dikirimkan kepada subscriber yang subscribe melalui HTTP POST request yang dipicu oleh pembuatannya, promosi, atau penghapusan produk. <br>
+2. What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)<br>
+Jika kita menggunakan variasi Pull model dari Observer Pattern untuk kasus tutorial ini, maka ada plus minus nya.<br>
+Advantages:
+- Dalam model Pull, Subscriber hanya akan mengambil data saat mereka memerlukannya, mengurangi penggunaan sumber daya jaringan dan komputasi.
+- Subscriber memiliki kontrol penuh atas kapan mereka ingin mengambil data, sehingga dapat menghindari pengambilan data yang tidak perlu.
+Disadvantages:
+- Dalam model Pull, pelanggan harus secara aktif meminta pembaruan, yang dapat menyebabkan keterlambatan dalam mendapatkan informasi baru. Ini dapat menjadi tidak efisien dalam kasus di mana pembaruan harus segera diterima.
+- Implementasi Pull model mungkin memerlukan lebih banyak logika pada sisi pelanggan untuk mengelola permintaan dan pembaruan data secara efisien.
+3. Explain what will happen to the program if we decide to not use multi-threading in the notification process.<br>
+Jika kita memutuskan untuk tidak menggunakan multi-threading dalam proses notification, maka notification akan diproses secara berurutan dan secara serial. Ini berarti setiap notification akan diproses satu per satu, menunggu hingga notification sebelumnya selesai sebelum memproses notification berikutnya. Akibatnya, jika ada banyak notification yang harus dikirim, proses ini bisa menjadi lambat dan menyebabkan penundaan dalam memberikan respons kepada pengguna. Dengan menggunakan multi-threading, kita dapat memproses notification secara paralel, mempercepat prosesnya dan meningkatkan responsivitas aplikasi. Tanpa multi-threading, aplikasi mungkin akan terasa lambat dan kurang responsif terutama saat mengirim banyak notification.
