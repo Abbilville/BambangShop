@@ -58,12 +58,12 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement delete function in Subscriber repository.`
     -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -86,5 +86,14 @@ Pada Singleton Pattern, satu class hanya memiliki satu instance di seluruh aplik
 
 
 #### Reflection Publisher-2
+1. In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model? <br>
+Seperti yang kita tahu dari prinsip SOLID yaitu SRP atau **Single Responsibility Principle** yang mana sebuah class hanya boleh berfungsi sesuai dengan kelasnya saja sehingga kita perlu memisahkan **Service** dan **Repository** dari Model karena Model hanyalah class untuk kita mendefinisikan modelnya, bukan untuk operasinya. Hal ini sesuai juga dengan prinsip ***Design Principle*** yang mana kita harus memisahkan part yang berbeda dari semestinya. Dalam MVC asli, Model mengetahui segala sesuatu yang terkait dengan data, mulai dari business logics, validasi, data itu sendiri, bahkan hingga operasi penyimpanan data. Dengan memisahkan business logics ke Service dan operasi penyimpanan data ke Repository, Model sekarang hanya bertanggung jawab sebagai "representatif" atau struktur dari sebuah set data. Ini kemudian dapat dengan mudah diubah menjadi tabel SQL dan sebaliknya karena tidak perlu menginisialisasi metode atau bidang yang tidak terkait lainnya.<br>
+2. What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model? <br>
+Jika kita hanya menggunakan Model tanpa memisahkan concern menjadi Service dan Repositori. Model (Product, Subscriber, Notification) akan bertanggung jawab atas representasi data dan business logics, menghasilkan class dengan banyak tanggung jawab yang melanggar SRP. Hal ini dapat menyebabkan peningkatan kompleksitas, keterkaitan erat antara komponen, dan kesulitan dalam memelihara dan memperluas codebase. Selain itu, interaksi antara model-model yang berbeda akan menjadi lebih rumit dan terkait erat. Misalnya, jika sebuah Product perlu memberi tahu Subscriber tentang perubahan, itu mungkin langsung berinteraksi dengan objek Subscriber untuk mengirimkan Notification, melanggar enkapsulasi dan menghasilkan kode yang sulit dipahami. Secara keseluruhan, tanpa pemisahan concern yang tepat, kompleksitas kode untuk setiap model akan meningkat secara signifikan, membuatnya lebih sulit dipahami, diuji, dan dipelihara. <br>
+3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects. <br>
+Menggunakan Postman membantu saya untuk mengetest program yang dibuat pada tutorial ini dengan mengirimkan response ke endpoint API sehingga kita dapat mengsimulasikannya walaupun belum ada HTML-nya. Berikut fitur yang mungkin akan saya gunakan di tugas kelompok nantinya:
+- **Sending Requests**, fitur ini memungkinkan kita dengan mudah mengirim permintaan HTTP ke endpoint API dengan parameter yang dapat disesuaikan seperti header, parameter query, dan request body.
+- **Automated Testing**: fitur ini memungkinkan kita membuat dan menjalankan rangkaian pengujian otomatis di Postman untuk memverifikasi perilaku endpoint API, termasuk pengujian untuk response status code, response body content, dan lainnya
+- **Environment Variables**: fitur ini memungkinkan untuk mendefinisikan dan menggunakan environment variable, yang membuat mudah untuk beralih antar environment yang berbeda (misalnya, development, staging, production) saat menguji API.
 
 #### Reflection Publisher-3
